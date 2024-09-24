@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RETRO FORUM</title>
+    <!-- cumtom css -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Tailwind css -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font Awesome cdn -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="container mx-auto">
+    <!-- header section starts-->
+    <header class="mt-10 min-h-screen">
+      <!-- navber starts  -->
+      <nav>
+        <div class="navbar bg-base-100">
+          <div class="navbar-start">
+            <h2 class="btn btn-ghost text-2xl">Retro Form</h2>
+          </div>
+          <div class="navbar-end">
+            <ul class="menu menu-horizontal px-1">
+              <li title="Home" class="mr-8">
+                <i class="fa-solid fa-house"></i>
+              </li>
+              <li title="Pen" class="mr-8"><i class="fa-solid fa-pen"></i></li>
+              <li title="User" class="mr-8">
+                <i class="fa-solid fa-user-plus"></i>
+              </li>
+              <li title="Flag" class="mr-8">
+                <i class="fa-solid fa-flag"></i>
+              </li>
+            </ul>
+            <button class="btn bg-[#797DFC] rounded-3xl text-lg text-white">
+              <a>Sign in</a>
+            </button>
+          </div>
+        </div>
+      </nav>
+      <!-- navber ends  -->
+      <!-- Banner section starts  -->
+      <div
+        class="min-h-screen bg-[url('/images/bgbanner.png'),linear-gradient(45deg,#12132D,#12132D)] bg-no-repeat bg-cover bg-center rounded-2xl mt-10"
+      >
+        <div class="min-h-screen flex justify-evenly items-center gap-8">
+          <div class="space-y-8">
+            <h1 class="text-6xl font-extrabold text-white">
+              Welcome to the <br />
+              ReTro Forum
+            </h1>
+            <p class="text-gray-300">
+              Share your favorite opinion and win and wp <br />
+              forum coffee mug!
+            </p>
+
+            <label class="input input-bordered w-96 flex items-center gap-2">
+              <input
+                id="input-feild"
+                type="text"
+                class="grow"
+                placeholder="Search"
+              />
+              <button
+                onclick="handleInputValue()"
+                class="badge badge-info bg-[#797DFC] py-4 px-6 text-white font-bold"
+              >
+                Search
+              </button>
+            </label>
+          </div>
+          <div
+            class="w-[370px] h-[288px] bg-white rounded-2xl text-center pt-12 space-y-6"
+          >
+            <p class="flex justify-between px-8">
+              Registered Users <span>01</span>
+            </p>
+            <p class="flex justify-between px-8">Forum <span>05</span></p>
+            <p class="flex justify-between px-8">Topics <span>01</span></p>
+            <p class="flex justify-between px-8">Replies <span>01</span></p>
+          </div>
+        </div>
+      </div>
+      <!-- Banner section ends  -->
+    </header>
+    <!-- header section ends-->
+    <!-- main section starts-->
+    <main class="mt-10">
+      <!-- Dynamic card section starts -->
+      <section class="">
+        <div class="text-center space-y-3 mt-10">
+          <h3 class="text-4xl font-bold">Let’s Discuss</h3>
+          <p class="text-center">
+            Yes, you can run unit tests and view the results directly within the
+            app. The <br />
+            integrated testing features allow for a streamlined .
+          </p>
+        </div>
+        <!-- Dynamic card -->
+        <div class="flex justify-evenly">
+          <div id="dynamic-card-container" class="">
+            <!--  -->
+          </div>
+          <div id="post-card-veiw" class="bg-[#12132D0D] w-[400px] rounded-xl">
+            <div class="flex justify-between gap-10 p-6">
+              <h3 class="text-xl font-bold">Title</h3>
+              <p>
+                <i class="fa-solid fa-check-double text-[#3DCE09]"></i>
+                Mark as Read (<span id="view-count">0</span>)
+              </p>
+            </div>
+            <div id="view-card" class=" "></div>
+          </div>
+        </div>
+      </section>
+      <!-- Dainamic card section ends -->
+    </main>
+    <!-- main section ends-->
+    <!-- font awesome icons -->
+    <div class="">
+      <!-- font awesome icons
+    
+    <i class="fa-solid fa-calendar-days"></i> calender icon
+     clock icon
+    <i class="fa-brands fa-twitter"></i> twitter
+    <i class="fa-brands fa-facebook"></i> facebook
+    <i class="fa-brands fa-github"></i> git hub
+    <i class="fa-brands fa-instagram"></i> instagram
+    --></div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
