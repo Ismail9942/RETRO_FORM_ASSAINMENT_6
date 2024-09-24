@@ -56,7 +56,6 @@ const displayPost = (posts) => {
     `;
 
     cardContainer.appendChild(card);
-    console.log(post);
   });
 };
 
@@ -76,16 +75,69 @@ const handleViewPost = (data, counted) => {
    <p class="flex justify-center items-center text-[#12132D99]"><i class="fa-solid fa-eye"></i><span class="ml-2">${counted}</span></p>
   `;
   viewContainer.appendChild(viewCard);
-  console.log(data, counted);
 };
 
 const handleSearch = () => {
   // e.preventDefault();
   const inputFeild = document.getElementById("input-feild");
   const value = inputFeild.value;
-  console.log(value);
 
   loadAllPostCategory(value);
 };
 
+const lastPost = async () => {
+  const res = await fetch(
+    `https://openapi.programming-hero.com/api/retro-forum/latest-posts`
+  );
+  const data = await res.json();
+
+  const lastPostContainer = document.getElementById("last-post-container");
+
+  data.forEach((post) => {
+    let authorName = "";
+    if (post.author.designation) {
+      authorName = `${post.author.designation}`;
+    } else {
+      authorName = `Unknown`;
+    }
+    let postedDate = "";
+    if (post.author.posted_date) {
+      postedDate = `${post.author.posted_date}`;
+    } else {
+      postedDate = `Unknown`;
+    }
+    const card = document.createElement("div");
+    card.classList = `bg-base-300 w-[380px] h-[520px] shadow-xl rounded-xl`;
+    card.innerHTML = `
+    <figure class="px-10 pt-10">
+              <img
+                src="${post.cover_image}"
+                alt="Shoes"
+                class="rounded-xl"
+              />
+            </figure>
+            <div class="px-10 pt-10 space-y-2">
+              <p class="space-x-4">
+                <i class="fa-solid fa-calendar-days"></i
+                ><span>${postedDate}</span>
+              </p>
+              <h3 class="font-bold">${post.title}</h3>
+              <p>${post.description}</p>
+
+              <div class="flex justify-start items-center gap-6">
+                <img class="w-16 rounded-full" src="${post.profile_image}" alt="" />
+                <div class="">
+                  <h3 class="font-bold">${post.author.name}</h3>
+                  <p>${authorName}</p>
+                </div>
+              </div>
+            </div>
+    `;
+    lastPostContainer.appendChild(card);
+  });
+
+  console.log(data);
+};
+
 loadAllPostCategory("");
+lastPost("");
