@@ -1,24 +1,42 @@
-const loadAllPostCategory = async (category) => {
+const loadAllPostCategory = async (category, isShowAll) => {
+  const loadingSpinner = document.getElementById("loading-spinner");
+  loadingSpinner.style.display = "block";
   const res = await fetch(
-    ` https://openapi.programming-hero.com/api/retro-forum/posts?${category}`
+    ` https://openapi.programming-hero.com/api/retro-forum/posts?category=${category}`
   );
   const data = await res.json();
 
   const posts = data.posts;
-  postAllCard(posts);
+  if (!posts.length) {
+    document.getElementById("not_found").style.display = "block";
+    loadingSpinner.style.display = "none";
+  }
+  if (posts.length > 0) {
+    loadingSpinner.style.display = "none";
+    document.getElementById("not_found").style.display = "none";
+  }
+  displayPost(posts, isShowAll);
 };
 
-const postAllCard = (posts) => {
+const displayPost = (posts) => {
   const cardContainer = document.getElementById("dynamic-card-container");
+  cardContainer.textContent = "";
   posts.forEach((post) => {
     const card = document.createElement("div");
     card.classList = `bg-[#797DFC26] p-6 rounded-2xl min-w-fit mt-6 flex gap-16`;
+
+    let bgColor = "";
+    if (post.isActive) {
+      bgColor = `<span class="indicator-item badge bg-green-500"></span>`;
+    } else {
+      bgColor = `<span class="indicator-item badge badge-secondary"></span>`;
+    }
+
     card.innerHTML = `
             <div class="indicator">
-              <span id="is-active" class="indicator-item badge  bg-green-400"></span>;
-
-            <div class="bg-base-300 grid h-32 w-32 place-items-center"><img class="rounded-lg" src="${post.image}" alt=""></div>
-            </div>
+           ${bgColor}
+            <div class="bg-base-300 grid h-32 w-32 place-items-center"><img src="${post.image}" alt=""/></div>
+           </div>
             <div class="space-y-4 ">
               <p># ${post.category} <span>  Author: ${post.author.name}</span></p>
               <h4 class="text-xl font-bold">${post.title}</h4>
@@ -61,12 +79,13 @@ const handleViewPost = (data, counted) => {
   console.log(data, counted);
 };
 
-const handleInputValue = () => {
+const handleSearch = () => {
   // e.preventDefault();
   const inputFeild = document.getElementById("input-feild");
   const value = inputFeild.value;
+  console.log(value);
 
   loadAllPostCategory(value);
 };
 
-loadAllPostCategory();
+loadAllPostCategory("");

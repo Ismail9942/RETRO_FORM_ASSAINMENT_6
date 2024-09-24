@@ -22,9 +22,9 @@
       referrerpolicy="no-referrer"
     />
   </head>
-  <body class="container mx-auto">
+  <body class="container mx-auto p-12">
     <!-- header section starts-->
-    <header class="mt-10 min-h-screen">
+    <header class="mt-10 min-h-screen mx-auto p-12">
       <!-- navber starts  -->
       <nav>
         <div class="navbar bg-base-100">
@@ -74,7 +74,7 @@
                 placeholder="Search"
               />
               <button
-                onclick="handleInputValue()"
+                onclick="handleSearch()"
                 class="badge badge-info bg-[#797DFC] py-4 px-6 text-white font-bold"
               >
                 Search
@@ -95,11 +95,13 @@
       </div>
       <!-- Banner section ends  -->
     </header>
-    <!-- header section ends-->
     <!-- main section starts-->
     <main class="mt-10">
+      <div id="loading-spinner" class="text-center hidden">
+        <span class="loading loading-spinner loading-lg"></span>
+      </div>
       <!-- Dynamic card section starts -->
-      <section class="">
+      <section class="p-12 container mx-auto">
         <div class="text-center space-y-3 mt-10">
           <h3 class="text-4xl font-bold">Let’s Discuss</h3>
           <p class="text-center">
@@ -109,11 +111,15 @@
           </p>
         </div>
         <!-- Dynamic card -->
+        <div id="not_found" class="hidden">
+          <img class="w-52 mx-auto" src="images/not_found.jpg" alt="" />
+        </div>
         <div class="flex justify-evenly">
-          <div id="dynamic-card-container" class="">
-            <!--  -->
-          </div>
-          <div id="post-card-veiw" class="bg-[#12132D0D] w-[400px] rounded-xl">
+          <div id="dynamic-card-container" class=""></div>
+          <div
+            id="post-card-veiw"
+            class="bg-[#12132D0D] w-[450px] mt-6 flex flex-col gap-16 rounded-2xl"
+          >
             <div class="flex justify-between gap-10 p-6">
               <h3 class="text-xl font-bold">Title</h3>
               <p>
@@ -121,11 +127,31 @@
                 Mark as Read (<span id="view-count">0</span>)
               </p>
             </div>
-            <div id="view-card" class=" "></div>
+            <div id="view-card"></div>
           </div>
         </div>
       </section>
-      <!-- Dainamic card section ends -->
+      <!-- join forum section starts -->
+      <section
+        class="mt-10 container h-[400px] p-12 mx-auto bg-[#12132D] rounded-2xl flex justify-evenly items-center"
+      >
+        <div class="space-y-3">
+          <h3 class="text-3xl font-bold text-white">Join Our Forum</h3>
+          <p class="text-gray-400">
+            Share your favorite opinion and win and wp forum coffee mug! Yes,
+            you can <br />
+            run unit tests and view the results directly within the app.
+          </p>
+          <button
+            class="btn btn-wide bg-[#797DFC] text-white text-xl rounded-full"
+          >
+            Registered Now
+          </button>
+        </div>
+        <div class="">
+          <img src="images/joinforum.png" alt="" />
+        </div>
+      </section>
     </main>
     <!-- main section ends-->
     <!-- font awesome icons -->
@@ -133,7 +159,6 @@
       <!-- font awesome icons
     
     <i class="fa-solid fa-calendar-days"></i> calender icon
-     clock icon
     <i class="fa-brands fa-twitter"></i> twitter
     <i class="fa-brands fa-facebook"></i> facebook
     <i class="fa-brands fa-github"></i> git hub
